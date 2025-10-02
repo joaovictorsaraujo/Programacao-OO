@@ -19,15 +19,17 @@ public class Conta {
         this.ger = ger;
     }
 
-    public Conta(Gerente ger){
+    public Conta(Pessoa tit, Gerente ger){
         Scanner input = new Scanner(System.in);
         System.out.println("Informe os outros atributos: ");
 
         System.out.print("Numero da conta: ");
         this.numero = input.nextLine();
 
-        this.titular = new Pessoa();
+        System.out.println("Data de criação: ");
         this.criacao = new Data();
+
+        this.titular = tit;
         this.saldo = 0;
         this.ger = ger;
     }
@@ -50,7 +52,6 @@ public class Conta {
             return false;
         }
     }
-
     public boolean sacar(double valor) {
         if (this.movimentacao(valor)) {
             System.out.println("Saque de " + valor + " realizado com sucesso!");
@@ -63,11 +64,17 @@ public class Conta {
         }
     }
 
+    public void sacar() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite o valor do saque: ");
+        this.sacar(input.nextDouble());
+    }
+
     public boolean transf(double valor, Conta dest){
         if(this.movimentacao(valor)){
             dest.depositar(valor);
             System.out.println("Transferencia de " + valor + " realizado com sucesso!");
-            System.out.println("Novo saldo: " + this.saldo);
+            System.out.println("Novo saldo da conta " + this.numero + ": " + this.saldo);
             return true;
         }
         else{
@@ -77,8 +84,25 @@ public class Conta {
         }
     }
 
+    public void transf(Conta dest){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite o valor a ser transferido para a conta " + dest.numero + ": ");
+        this.transf(input.nextDouble(), dest);
+    }
+
     public void depositar(double valor){
         this.saldo += valor;
-        System.out.println("Deposito realizado!");
+        System.out.println("Transação realizada com sucesso!");
+        System.out.println("Novo saldo da conta " + this.numero + ": " + this.saldo);
     }
+
+    public void depositar(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite o valor do a ser depositado: ");
+        this.depositar(input.nextDouble());
+    }
+
+    public String getNumero(){ return this.numero; }
+
+    public Pessoa getTitular(){ return this.titular; }
 }
