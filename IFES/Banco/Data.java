@@ -12,13 +12,13 @@ public class Data {
     public Data(){
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Digite o dia de nascimento: ");
+        System.out.print("Digite o dia: ");
         this.dia = input.nextInt();
 
-        System.out.print("Digite o mes de nascimento: ");
+        System.out.print("Digite o mes: ");
         this.mes = input.nextInt();
 
-        System.out.print("Digite o ano de nascimento: ");
+        System.out.print("Digite o ano: ");
         this.ano = input.nextInt();
     }
 
