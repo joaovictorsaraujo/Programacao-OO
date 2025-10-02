@@ -10,8 +10,8 @@ public class ContaCorrente extends Conta {
 
     private double limite;
 
-    public ContaCorrente(Gerente ger){
-        super(ger);
+    public ContaCorrente(Pessoa tit, Gerente ger){
+        super(tit, ger);
         this.alterarLimite();
     }
 
@@ -31,7 +31,7 @@ public class ContaCorrente extends Conta {
 
     public void alterarLimite(String s) {
         if(this.ger.validarAcesso(s)) {
-            System.out.print("Digite o novo limite da conta " + this.numero + ":");
+            System.out.print("Defina o limite da conta " + this.numero + ": ");
             Scanner limite = new Scanner(System.in);
             this.limite = limite.nextDouble();
             System.out.println("Sucesso! Limite atual: " + this.limite);
