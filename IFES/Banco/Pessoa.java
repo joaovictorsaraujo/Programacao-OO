@@ -1,5 +1,7 @@
 package banco;
+
 import java.util.Scanner;
+
 /**
  *
  * @author 20241bsi0319
@@ -19,6 +21,7 @@ public class Pessoa {
         System.out.print("Digite o CPF: ");
         this.cpf = input.nextLine();
 
+        System.out.println("Informe a data de nascimento:");
         this.nasc = new Data();
 
         System.out.print("Informe o sexo: ");
@@ -46,5 +49,13 @@ public class Pessoa {
             }
         }
         return age;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }
